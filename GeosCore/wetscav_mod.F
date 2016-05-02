@@ -2976,6 +2976,11 @@
       USE TRACERID_MOD,       ONLY : IDTASOA2, IDTASOA3
       USE TRACERID_MOD,       ONLY : IDTASOG1, IDTASOG2, IDTASOG3
 
+      USE TRACERID_MOD,       ONLY : IDTFPAN2, IDTFPAN1, IDTPFAL
+      USE TRACERID_MOD,       ONLY : IDTFTAL2, IDTFTCA, IDTFT1OH
+      USE TRACERID_MOD,       ONLY : IDTFT1OOH, IDTPFALHY, IDTPFOH
+      USE TRACERID_MOD,       ONLY : IDTPFOA, IDTPFNA, IDTSCPFCA
+
 #if defined( TOMAS )
       USE TRACERID_MOD, ONLY : IDTH2SO4,IDTNK1,   IDTSF1,  IDTSS1
       USE TRACERID_MOD, ONLY : IDTECIL1,IDTOCIL1, IDTOCOB1,IDTDUST1
@@ -3627,6 +3632,185 @@
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
          CALL COMPUTE_L2G( 0.76e+0_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      !------------------------------
+      ! PFCs start here, thackray
+      !------------------------------
+      ELSE IF (( N == IDTFTAL2 ) .or. ( N == IDTPFAL )) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+1_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF ( N == IDTFT1OH )  THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+2_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF ( N == IDTPFOH ) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+2_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF (( N == IDTFPAN2 ) .or. ( N == IDTFPAN1 )) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+1_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF ( N == IDTFTCA .or. N == IDTPFALHY ) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+4_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF ( N == IDTPFOA .or. N == IDTPFNA .or. 
+     &          N == IDTSCPFCA ) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+8_fp, -3.72e+3_fp, TK, 
+     &         CLDLIQ(I,J,L), L2G )
+
+         ! Fraction of HBr in liquid phase
+         C_TOT = 1e+0_fp + L2G
+         F_L   = L2G / C_TOT
+
+         ! Compute the rate constant K.
+         IF ( TK >= 268e+0_fp ) THEN
+            K = K_RAIN * F_L
+         ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+            K = K_RAIN * (0.e+0_fp * F_L)
+         ELSE
+            K = 0e+0_fp   
+         ENDIF
+  
+         ! Compute RAINFRAC, the fraction of rained-out HBr
+         ! (Eq. 10, Jacob et al, 2000)
+         RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+
+      ELSE IF ( N == IDTFT1OOH ) THEN
+
+         ! 1. H0 and the heat of solution are taken from Dean [1992].
+         ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
+         !    from Beckwith et al. [1996]
+         CALL COMPUTE_L2G( 1.0e+2_fp, -3.72e+3_fp, TK, 
      &         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
@@ -4308,6 +4492,12 @@
       USE TRACERID_MOD, ONLY : IDTASOAN, IDTASOA1, IDTASOA2, IDTASOA3
       USE TRACERID_MOD, ONLY : IDTASOG1, IDTASOG2, IDTASOG3
 
+      USE TRACERID_MOD, ONLY : IDTFPAN2, IDTFPAN1, IDTPFAL
+      USE TRACERID_MOD, ONLY : IDTFTAL2, IDTFTCA, IDTFT1OH
+      USE TRACERID_MOD, ONLY : IDTFT1OOH, IDTPFALHY, IDTPFOH
+      USE TRACERID_MOD, ONLY : IDTPFOA, IDTPFNA, IDTSCPFCA
+
+
       USE GIGC_Input_Opt_Mod, ONLY : OptInput
       USE GIGC_State_Chm_Mod, ONLY : ChmState
       USE GIGC_State_Met_Mod, ONLY : MetState !(sfarina 2/20/13)
@@ -4589,6 +4779,50 @@
       ELSE IF ( N == IDTIEPOX ) THEN
          KIN      = .FALSE.
          CALL WASHFRAC_LIQ_GAS( 1.3e+8_fp, 0.0e+0_fp, PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      !------------------------------
+      ! PFCs start here, thackray
+      !------------------------------
+      ELSE IF ( N == IDTFTAL2 .or. N == IDTPFAL ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+1_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTFT1OH )  THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+2_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTPFOH ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+2_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTFPAN2 .or. N == IDTFPAN1 ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+1_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTFTCA ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+4_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTPFOA .or. N == IDTPFNA .or. 
+     &          N == IDTSCPFCA ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+8_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTFT1OOH ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+2_fp, -3.72e+3_fp,PP, DT,  F,
+     &                          DZ,     TK,    WASHFRAC, KIN  )
+
+      ELSE IF ( N == IDTPFALHY ) THEN
+         KIN      = .FALSE.
+         CALL WASHFRAC_LIQ_GAS( 1.0e+3_fp, -3.72e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
       !------------------------------
@@ -7878,6 +8112,12 @@
       USE TRACERID_MOD, ONLY : IDTASOAN, IDTASOA1, IDTASOA2, IDTASOA3
       USE TRACERID_MOD, ONLY : IDTASOG1, IDTASOG2, IDTASOG3
 
+      USE TRACERID_MOD,       ONLY : IDTFPAN2, IDTFPAN1, IDTPFAL
+      USE TRACERID_MOD,       ONLY : IDTFTAL2, IDTFTCA, IDTFT1OH
+      USE TRACERID_MOD,       ONLY : IDTFT1OOH, IDTPFALHY, IDTPFOH
+      USE TRACERID_MOD,       ONLY : IDTPFOA, IDTPFNA, IDTSCPFCA
+
+
 #if defined( TOMAS )
       USE TRACERID_MOD, ONLY : IDTH2SO4,  IDTNK1,    IDTSF1,  IDTSS1
       USE TRACERID_MOD, ONLY : IDTECIL1,  IDTOCIL1,  IDTOCOB1,IDTDUST1
@@ -8025,6 +8265,57 @@
             NSOL         = NSOL + 1
             IDWETD(NSOL) = IDTIEPOX
          ! end FP
+
+         !-----------------------------
+         ! PFCs
+         !-----------------------------
+         ELSE IF ( N == IDTFPAN2 ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTFPAN2
+
+         ELSE IF ( N == IDTFPAN1 ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTFPAN1
+
+         ELSE IF ( N == IDTPFAL ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFAL
+
+         ELSE IF ( N == IDTFTAL2 ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFAL
+
+         ELSE IF ( N == IDTFTCA ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTFTCA
+
+         ELSE IF ( N == IDTFT1OH ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTFT1OH
+
+         ELSE IF ( N == IDTFT1OOH ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTFT1OOH
+
+         ELSE IF ( N == IDTPFALHY ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFALHY
+
+         ELSE IF ( N == IDTPFOH ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFOH
+
+         ELSE IF ( N == IDTPFOA ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFOA
+
+         ELSE IF ( N == IDTPFNA ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTPFNA
+
+         ELSE IF ( N == IDTSCPFCA ) THEN
+            NSOL         = NSOL + 1
+            IDWETD(NSOL) = IDTSCPFCA
 
          !-----------------------------
          ! Sulfate aerosol tracers
@@ -8516,7 +8807,7 @@
                                                      ! IEPOX, PMNN
 
          NMAX = NMAX + 4                             ! HBr, HOBr, Br2, BrNO3
-
+         NMAX = NMAX + 11                            ! PFCs
          IF ( LSULF )    NMAX = NMAX + 8             ! SO2,   SO4,    MSA,
                                                      ! NH3,   NH4,    NIT
          IF ( LDUST  )   NMAX = NMAX + NDSTBIN       ! plus # of dust bins

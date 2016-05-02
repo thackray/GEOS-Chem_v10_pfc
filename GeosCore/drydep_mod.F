@@ -4736,6 +4736,129 @@
             XMW(NUMDEP)     = 149e-3_f8
             AIROSOL(NUMDEP) = .FALSE.   
 
+         !----------------------------------
+         ! PFC Chemistry
+         !----------------------------------
+         ELSE IF ( N == IDTFTAL2 ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFTAL2
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FTAL2'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTFPAN2 ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFPAN2
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FPAN2'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTFTCA ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFTCA
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FTCA'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTFT1OH ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFT1OH
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FT1OH'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTFT1OOH ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFT1OOH
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FT1OOH'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTPFAL ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTPFAL
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'PFAL'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTPFALHY ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTPFALHY
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'PFALHY'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTFPAN1 ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTFPAN1
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'FPAN1'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTPFOH ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTPFOH
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'PFOH'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTPFOA ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTPFOA
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'PFOA'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTPFNA ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTPFNA
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'PFNA'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
+         ELSE IF ( N == IDTSCPFCA ) THEN
+            NUMDEP          = NUMDEP + 1
+            NTRAIND(NUMDEP) = IDTSCPFCA
+            NDVZIND(NUMDEP) = NUMDEP
+            DEPNAME(NUMDEP) = 'SCPFCA'
+            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            F0(NUMDEP)      = 0.0e+0_f8
+            XMW(NUMDEP)     = 36e-3_f8                   ! MW of seasalt
+            AIROSOL(NUMDEP) = .FALSE.
+
          !ANIT
          ELSE IF ( N == IDTPROPNN ) THEN
             NUMDEP          = NUMDEP + 1

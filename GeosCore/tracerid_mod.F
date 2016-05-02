@@ -163,6 +163,9 @@
       INTEGER            :: IDTPYPAN,IDTMAP
       INTEGER            :: IDTAP
       INTEGER            :: IDTMPN
+      INTEGER            :: IDTFTAL2, IDTFPAN2, IDTFT1OH, IDTFT1OOH
+      INTEGER            :: IDTPFAL, IDTPFALHY, IDTFPAN1, IDTPFOH
+      INTEGER            :: IDTPFOA, IDTPFNA, IDTSCPFCA, IDTFTCA
 
       ! For tagged Ox simulation
       INTEGER            :: IDTO3Strt
@@ -649,6 +652,45 @@
 
             CASE ( 'MP' )
                IDTMP    = N
+
+            !------------------------------
+            ! PFC Tracers
+            !------------------------------
+            CASE ( 'FTAL2' )
+               IDTFTAL2 = N
+
+            CASE ( 'FPAN2' )
+               IDTFPAN2 = N
+
+            CASE ( 'FTCA' )
+               IDTFTCA  = N
+
+            CASE ( 'FT1OH' )
+               IDTFT1OH = N
+
+            CASE ( 'FT1OOH' )
+               IDTFT1OOH= N
+
+            CASE ( 'PFAL' )
+               IDTPFAL  = N
+
+            CASE ( 'PFALHY' )
+               IDTPFALHY= N
+
+            CASE ( 'FPAN1' )
+               IDTFPAN1 = N
+
+            CASE ( 'PFOH' )
+               IDTPFOH  = N
+
+            CASE ( 'PFOA' )
+               IDTPFOA  = N
+
+            CASE ( 'PFNA' )
+               IDTPFNA  = N
+ 
+            CASE ( 'SCPFCA' )
+               IDTSCPFCA= N
 
             !--------------------------------
             ! Sulfur & nitrate aerosols
