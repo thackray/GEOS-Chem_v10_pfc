@@ -691,6 +691,12 @@
  
             CASE ( 'SCPFCA' )
                IDTSCPFCA= N
+            
+            CASE ( 'FTI' )
+               IDTFTI= N
+            
+            CASE ( 'FTOH' )
+               IDTFTOH= N
 
             !--------------------------------
             ! Sulfur & nitrate aerosols
