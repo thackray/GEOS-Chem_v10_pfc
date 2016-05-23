@@ -4744,7 +4744,7 @@
             NTRAIND(NUMDEP) = IDTFTAL2
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FTAL2'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+1_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 412e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4754,7 +4754,7 @@
             NTRAIND(NUMDEP) = IDTFPAN2
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FPAN2'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+1_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 505e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4764,7 +4764,7 @@
             NTRAIND(NUMDEP) = IDTFTCA
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FTCA'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+4_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 428e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4774,7 +4774,7 @@
             NTRAIND(NUMDEP) = IDTFT1OH
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FT1OH'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+2_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 412e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4784,7 +4784,7 @@
             NTRAIND(NUMDEP) = IDTFT1OOH
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FT1OOH'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+2_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 428e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4794,7 +4794,7 @@
             NTRAIND(NUMDEP) = IDTPFAL
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'PFAL'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+1_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 398e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4804,7 +4804,7 @@
             NTRAIND(NUMDEP) = IDTPFALHY
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'PFALHY'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+4_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 411e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4814,7 +4814,7 @@
             NTRAIND(NUMDEP) = IDTFPAN1
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'FPAN1'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+1_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 491e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4824,7 +4824,7 @@
             NTRAIND(NUMDEP) = IDTPFOH
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'PFOH'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+2_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 386e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4834,7 +4834,7 @@
             NTRAIND(NUMDEP) = IDTPFOA
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'PFOA'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+8_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 414e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4844,7 +4844,7 @@
             NTRAIND(NUMDEP) = IDTPFNA
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'PFNA'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+8_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 431e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
@@ -4854,7 +4854,7 @@
             NTRAIND(NUMDEP) = IDTSCPFCA
             NDVZIND(NUMDEP) = NUMDEP
             DEPNAME(NUMDEP) = 'SCPFCA'
-            HSTAR(NUMDEP)   = 0.0e+0_f8 
+            HSTAR(NUMDEP)   = 1.0e+8_f8 
             F0(NUMDEP)      = 0.0e+0_f8
             XMW(NUMDEP)     = 364e-3_f8                   ! MW of seasalt
             AIROSOL(NUMDEP) = .FALSE.
