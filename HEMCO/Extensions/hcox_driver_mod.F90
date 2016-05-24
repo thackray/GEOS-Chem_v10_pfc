@@ -109,6 +109,7 @@ CONTAINS
     USE HCOX_Finn_Mod,          ONLY : HCOX_FINN_Init
     USE HCOX_GC_RnPbBe_Mod,     ONLY : HCOX_GC_RnPbBe_Init
     USE HCOX_GC_POPs_Mod,       ONLY : HCOX_GC_POPs_Init
+    USE HCOX_PFCA_Mod,          ONLY : HCOX_PFCA_Init
     USE HCOX_CH4WetLand_MOD,    ONLY : HCOX_CH4WETLAND_Init
 #if defined( TOMAS )
     USE HCOX_TOMAS_SeaSalt_Mod, ONLY : HCOX_TOMAS_SeaSalt_Init
@@ -242,6 +243,13 @@ CONTAINS
     IF ( RC /= HCO_SUCCESS ) RETURN 
 
     !-----------------------------------------------------------------------
+    ! Extension for GEOS-Chem PFCA specialty simulation
+    !-----------------------------------------------------------------------
+    CALL HCOX_PFCA_Init( amIRoot, HcoState, 'PFCA', &
+                                     ExtState,  RC ) 
+    IF ( RC /= HCO_SUCCESS ) RETURN 
+
+    !-----------------------------------------------------------------------
     ! CH4 wetland emissions 
     !-----------------------------------------------------------------------
     CALL HCOX_CH4Wetland_Init( amIRoot,  HcoState, 'CH4_WETLANDS', &
@@ -318,6 +326,7 @@ CONTAINS
     USE HcoX_FINN_Mod,          ONLY : HcoX_FINN_Run 
     USE HCOX_GC_RnPbBe_Mod,     ONLY : HCOX_GC_RnPbBe_Run
     USE HCOX_GC_POPs_Mod,       ONLY : HCOX_GC_POPs_Run
+    USE HCOX_PFCA_Mod,          ONLY : HCOX_PFCA_Run
     USE HCOX_CH4WetLand_mod,    ONLY : HCOX_CH4Wetland_Run
 #if defined( TOMAS )
     USE HCOX_TOMAS_SeaSalt_Mod, ONLY : HCOX_TOMAS_SeaSalt_Run
@@ -476,6 +485,14 @@ CONTAINS
     ENDIF
 
     !-----------------------------------------------------------------------
+    ! Emissions for GEOS-Chem PFCA specialty simulation
+    !-----------------------------------------------------------------------
+    IF ( ExtState%GC_POPs ) THEN
+       CALL HCOX_PFCA_Run( amIRoot, ExtState, HcoState, RC )
+       IF ( RC /= HCO_SUCCESS ) RETURN 
+    ENDIF
+
+    !-----------------------------------------------------------------------
     ! CH4 wetland emissions 
     !-----------------------------------------------------------------------
     IF ( ExtState%Wetland_CH4 ) THEN
@@ -543,6 +560,7 @@ CONTAINS
     USE HcoX_FINN_Mod,          ONLY : HcoX_FINN_Final
     USE HCOX_GC_RnPbBe_Mod,     ONLY : HCOX_GC_RnPbBe_Final
     USE HCOX_GC_POPs_Mod,       ONLY : HCOX_GC_POPs_Final
+    USE HCOX_PFCA_Mod,          ONLY : HCOX_PFCA_Final
     USE HCOX_CH4WetLand_Mod,    ONLY : HCOX_CH4Wetland_Final
 #if defined( TOMAS )
     USE HCOX_TOMAS_SeaSalt_Mod, ONLY : HCOX_TOMAS_SeaSalt_Final
@@ -595,6 +613,7 @@ CONTAINS
        IF ( ExtState%FINN          ) CALL HcoX_FINN_Final
        IF ( ExtState%GC_RnPbBe     ) CALL HCOX_GC_RnPbBe_Final()
        IF ( ExtState%GC_POPs       ) CALL HCOX_GC_POPs_Final()
+       IF ( ExtState%PFCA          ) CALL HCOX_PFCA_Final()
        IF ( ExtState%Wetland_CH4   ) CALL HCOX_CH4Wetland_Final()
 #if defined( TOMAS )
        IF ( ExtState%TOMAS_SeaSalt ) CALL HCOX_TOMAS_SeaSalt_Final()
