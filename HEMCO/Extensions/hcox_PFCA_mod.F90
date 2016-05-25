@@ -71,7 +71,8 @@ MODULE HCOX_PFCA_Mod
   REAL*8,  PARAMETER            :: SMALLNUM = 1D-20
 
   ! Pointers to emission arrays read from disk
-  REAL(sp), POINTER             :: PFCA_TOT_EM(:,:) => NULL()
+  REAL(sp), POINTER             :: FTOH_TOT_EM(:,:) => NULL()
+  REAL(sp), POINTER             :: FTI_TOT_EM(:,:) => NULL()
 
   ! Calculated emissions of OC-phase, BC-phase, and gas-phase POPs
   REAL(hp), ALLOCATABLE, TARGET :: EFTOH(:,:,:)
@@ -192,7 +193,8 @@ CONTAINS
     DO I = 1, HcoState%Nx
 
        F_OF_PBL = 0d0 
-       T_POP = 0d0       
+       T_FTOH = 0d0       
+       T_FTI = 0d0       
 
        ! Here, save the total from the emissions array
        ! into the T_POP variable [kg/m2/s]
@@ -398,17 +400,17 @@ CONTAINS
 
     ALLOCATE( EFTOH ( HcoState%NX, HcoState%NY, HcoState%NZ ), STAT=RC )
     IF ( RC /= 0 ) THEN
-       CALL HCO_ERROR ( 'Cannot allocate EPOP_G', RC )
+       CALL HCO_ERROR ( 'Cannot allocate EFTOH', RC )
        RETURN
     ENDIF 
-    EPOP_G = 0.0e0_hp
+    EFTOH = 0.0e0_hp
 
     ALLOCATE( EFTI( HcoState%NX, HcoState%NY, HcoState%NZ ), STAT=RC )
     IF ( RC /= 0 ) THEN
-       CALL HCO_ERROR ( 'Cannot allocate EPOP_OC', RC )
+       CALL HCO_ERROR ( 'Cannot allocate EFTI', RC )
        RETURN
     ENDIF 
-    EPOP_OC = 0.0e0_hp
+    EFTI = 0.0e0_hp
 
     ALLOCATE( SUM_G_EM( HcoState%NX, HcoState%NY ), STAT=RC )
     IF ( RC /= 0 ) THEN
