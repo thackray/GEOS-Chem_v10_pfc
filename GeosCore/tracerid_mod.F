@@ -166,6 +166,7 @@
       INTEGER            :: IDTFTAL2, IDTFPAN2, IDTFT1OH, IDTFT1OOH
       INTEGER            :: IDTPFAL, IDTPFALHY, IDTFPAN1, IDTPFOH
       INTEGER            :: IDTPFOA, IDTPFNA, IDTSCPFCA, IDTFTCA
+      INTEGER            :: IDTFTOH, IDTFTI
 
       ! For tagged Ox simulation
       INTEGER            :: IDTO3Strt

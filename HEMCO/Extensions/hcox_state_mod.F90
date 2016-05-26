@@ -110,6 +110,7 @@ MODULE HCOX_STATE_MOD
      LOGICAL                   :: FINN           ! FINN biomass burning
      LOGICAL                   :: GC_RnPbBe      ! GEOS-Chem Rn-Pb-Be simulation
      LOGICAL                   :: GC_POPs        ! GEOS-Chem POPs simulation
+     LOGICAL                   :: PFCA           ! GEOS-Chem PFCA simulation
      LOGICAL                   :: Wetland_CH4    ! Methane emissions from wetlands
      LOGICAL                   :: TOMAS_SeaSalt  ! TOMAS sectional sea salt
 
@@ -297,6 +298,7 @@ CONTAINS
     ExtState%FINN          = .FALSE.
     ExtState%GC_RnPbBe     = .FALSE.
     ExtState%GC_POPs       = .FALSE.
+    ExtState%PFCA          = .FALSE.
     ExtState%Wetland_CH4   = .FALSE.
     ExtState%TOMAS_SeaSalt = .FALSE.
 
