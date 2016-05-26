@@ -487,7 +487,7 @@ CONTAINS
     !-----------------------------------------------------------------------
     ! Emissions for GEOS-Chem PFCA specialty simulation
     !-----------------------------------------------------------------------
-    IF ( ExtState%GC_POPs ) THEN
+    IF ( ExtState%PFCA ) THEN
        CALL HCOX_PFCA_Run( amIRoot, ExtState, HcoState, RC )
        IF ( RC /= HCO_SUCCESS ) RETURN 
     ENDIF
