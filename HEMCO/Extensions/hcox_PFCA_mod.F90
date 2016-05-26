@@ -3,10 +3,10 @@
 !------------------------------------------------------------------------------
 !BOP
 !
-! !MODULE: hcox_gc_POPs_mod.F90
+! !MODULE: hcox_PFCA_mod.F90
 !
-! !DESCRIPTION: Defines the HEMCO extension for the GEOS-Chem persistent
-!   organic pollutants (POPs) specialty simulation.
+! !DESCRIPTION: Defines the HEMCO extension for the GEOS-Chem PFCA
+!    specialty simulation.
 !\\
 !\\
 ! !INTERFACE:
@@ -30,11 +30,6 @@ MODULE HCOX_PFCA_Mod
   PUBLIC  :: HcoX_PFCA_Final
 !
 ! !REMARKS:
-!  POPs Tracers
-!  ============================================================================
-!  (1 ) POPG   : Gaseous POP    - total tracer  
-!  (2 ) POPPOC : OC-sorbed POP  - total tracer
-!  (3 ) POPPBC : BC-sorbed POP  - total tracer
 !
 !  References:
 !  ============================================================================
@@ -74,7 +69,7 @@ MODULE HCOX_PFCA_Mod
   REAL(sp), POINTER             :: FTOH_TOT_EM(:,:) => NULL()
   REAL(sp), POINTER             :: FTI_TOT_EM(:,:) => NULL()
 
-  ! Calculated emissions of OC-phase, BC-phase, and gas-phase POPs
+  ! Calculated emissions of FTOH and FTI
   REAL(hp), ALLOCATABLE, TARGET :: EFTOH(:,:,:)
   REAL(hp), ALLOCATABLE, TARGET :: EFTI(:,:,:)
 
@@ -91,8 +86,8 @@ CONTAINS
 !
 ! !IROUTINE: HCOX_PFCA_run 
 !
-! !DESCRIPTION: Subroutine HcoX\_Gc\_POPs\_Run computes emissions of OC-phase,
-!  BC-phase, and gas-phase POPs for the GEOS-Chem POPs specialty simulation.
+! !DESCRIPTION: Subroutine HcoX\_PFCA\_Run computes emissions of FTOH, FTI
+!  for the GEOS-Chem PFCA specialty simulation.
 !\\
 !\\
 ! !INTERFACE:
@@ -108,7 +103,7 @@ CONTAINS
 ! !INPUT PARAMETERS:
 !
     LOGICAL,          INTENT(IN   ) :: am_I_Root   ! Are we on the root CPU?
-    TYPE(Ext_State),  POINTER       :: ExtState    ! Options for POPs sim
+    TYPE(Ext_State),  POINTER       :: ExtState    ! Options for PFCA sim
     TYPE(HCO_State),  POINTER       :: HcoState    ! HEMCO state 
 !
 ! !INPUT/OUTPUT PARAMETERS:
@@ -116,7 +111,6 @@ CONTAINS
     INTEGER,          INTENT(INOUT) :: RC          ! Success or failure?
 !
 ! !REMARKS:
-!  This code is based on routine EMISSPOPS in prior versions of GEOS-Chem.
 !
 ! !REVISION HISTORY:
 !  20 Sep 2010 - N.E. Selin  - Initial Version based on EMISSMERCURY
@@ -197,14 +191,13 @@ CONTAINS
        T_FTI = 0d0       
 
        ! Here, save the total from the emissions array
-       ! into the T_POP variable [kg/m2/s]
+       ! into the T_FTX variable [kg/m2/s]
        T_FTOH = FTOH_TOT_EM(I,J)
        T_FTI = FTI_TOT_EM(I,J)
 
        !====================================================================
-       ! Apportion total POPs emitted to gas phase, OC-bound, and BC-bound
-       ! emissions (clf, 2/1/2011)         
-       ! Then partition POP throughout PBL; store into STT [kg]
+       !          
+       ! Then partition emis throughout PBL; store into STT [kg]
        ! Now make sure STT does not underflow (cdh, bmy, 4/6/06; eck 9/20/10)
        !====================================================================
 
@@ -230,7 +223,7 @@ CONTAINS
        ENDDO
 
        !==================================================================
-       ! Sum different POPs emissions phases (OC, BC, and gas phase)
+       ! 
        ! through bottom layer to top of PBL for storage in ND53 diagnostic
        !==================================================================
        SUM_G_EM(I,J)  = SUM(EFTOH(I,J,1:PBL_MAX)) + SUM(EFTI(I,J,1:PBL_MAX))  
@@ -241,7 +234,7 @@ CONTAINS
     ENDDO
 
     !=======================================================================
-    ! Add POPs emissions to HEMCO data structure & diagnostics
+    ! Add FTX emissions to HEMCO data structure & diagnostics
     !=======================================================================
 
   
@@ -290,8 +283,8 @@ CONTAINS
 !
 ! !IROUTINE: HCOX_PFCA_Init 
 !
-! !DESCRIPTION: Subroutine HcoX\_GC\_POPs\_Init initializes the HEMCO
-! GC\_POPs extension.
+! !DESCRIPTION: Subroutine HcoX\_PFCA\_Init initializes the HEMCO
+!  PFCA extension.
 !\\
 !\\
 ! !INTERFACE:
@@ -349,7 +342,7 @@ CONTAINS
 
     ! Verbose mode
     IF ( am_I_Root ) THEN
-       MSG = 'Use gc_POPs emissions module (extension module)'
+       MSG = 'Use PFCA emissions module (extension module)'
        CALL HCO_MSG( MSG )
 
        MSG = 'Use the following species (Name: HcoID):'
@@ -443,8 +436,8 @@ CONTAINS
 !
 ! !IROUTINE: HCOX_PFCA_Final
 !
-! !DESCRIPTION: Subroutine HcoX\_GC\_POPs\_Final finalizes the HEMCO
-!  extension for the GEOS-Chem POPs specialty simulation.  All module
+! !DESCRIPTION: Subroutine HcoX\_PFCA\_Final finalizes the HEMCO
+!  extension for the GEOS-Chem PFCA specialty simulation.  All module
 !  arrays will be deallocated.
 !\\
 !\\
