@@ -60,8 +60,8 @@ MODULE HCOX_PFCA_Mod
 !
   ! Fields required by module
   INTEGER                       :: ExtNr     = -1   ! HEMCO Extension number
-  INTEGER                       :: IDTFTI = -1      ! Index # for FTI tracer
-  INTEGER                       :: IDTFTOH   = -1   ! Index # for FTOH tracer
+  INTEGER                       :: IDTFTI = 80      ! Index # for FTI tracer
+  INTEGER                       :: IDTFTOH   = 79   ! Index # for FTOH tracer
 
   REAL*8,  PARAMETER            :: SMALLNUM = 1D-20
 
@@ -164,10 +164,10 @@ CONTAINS
     !=======================================================================
     IF ( FIRST ) THEN
 
-       CALL HCO_GetPtr( aIR, 'FTOH', FTOH_TOT_EM, RC )
+       CALL HCO_GetPtr( aIR, 'PFCA_FTOH', FTOH_TOT_EM, RC )
        IF ( RC /= HCO_SUCCESS ) RETURN
 
-       CALL HCO_GetPtr( aIR, 'FTI', FTI_TOT_EM, RC )
+       CALL HCO_GetPtr( aIR, 'PFCA_FTI', FTI_TOT_EM, RC )
        IF ( RC /= HCO_SUCCESS ) RETURN
 
        FIRST = .FALSE.
