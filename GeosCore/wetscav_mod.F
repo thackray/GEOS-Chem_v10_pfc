@@ -8459,7 +8459,7 @@
 
          ELSE IF ( N == IDTFTAL2 ) THEN
             NSOL         = NSOL + 1
-            IDWETD(NSOL) = IDTPFAL
+            IDWETD(NSOL) = IDTFTAL2
 
          ELSE IF ( N == IDTFTCA ) THEN
             NSOL         = NSOL + 1
