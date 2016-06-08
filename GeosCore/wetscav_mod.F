@@ -3930,7 +3930,7 @@
          ! (Eq. 10, Jacob et al, 2000)
          RAINFRAC = GET_RAINFRAC( K, F, DT ) 
 
-         !ELSE IF ( N == IDTFTI ) THEN
+      ELSE IF ( N == IDTFTI ) THEN
 
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
@@ -3954,8 +3954,9 @@
          ! Compute RAINFRAC, the fraction of rained-out HBr
          ! (Eq. 10, Jacob et al, 2000)
          !RAINFRAC = GET_RAINFRAC( K, F, DT ) 
+         RAINFRAC = 0.0
 
-         !ELSE IF ( N == IDTFTOH ) THEN
+      ELSE IF ( N == IDTFTOH ) THEN
 
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
@@ -3974,12 +3975,12 @@
          !    K = K_RAIN * (0.e+0_fp * F_L)
          ! ELSE
          !    K = 0e+0_fp   
-         ! ENDIF
+         !ENDIF
   
          ! Compute RAINFRAC, the fraction of rained-out HBr
          ! (Eq. 10, Jacob et al, 2000)
          !RAINFRAC = GET_RAINFRAC( K, F, DT ) 
-
+         RAINFRAC = 0.0
       !------------------------------
       ! NH3 (liquid & ice phases)
       !------------------------------
