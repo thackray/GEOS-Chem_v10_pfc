@@ -3930,17 +3930,17 @@
          ! (Eq. 10, Jacob et al, 2000)
          RAINFRAC = GET_RAINFRAC( K, F, DT ) 
 
-      !ELSE IF ( N == IDTFTI ) THEN
+         !ELSE IF ( N == IDTFTI ) THEN
 
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-      !   CALL COMPUTE_L2G( 4.0e-9_fp, -3.72e+3_fp, TK, 
-     !&         CLDLIQ(I,J,L), L2G )
+         !   CALL COMPUTE_L2G( 4.0e-9_fp, -3.72e+3_fp, TK, 
+         !&         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
-       !  C_TOT = 1e+0_fp + L2G
-        ! F_L   = L2G / C_TOT
+         !  C_TOT = 1e+0_fp + L2G
+         ! F_L   = L2G / C_TOT
 
          ! Compute the rate constant K.
          !IF ( TK >= 268e+0_fp ) THEN
@@ -3955,26 +3955,26 @@
          ! (Eq. 10, Jacob et al, 2000)
          !RAINFRAC = GET_RAINFRAC( K, F, DT ) 
 
-      !ELSE IF ( N == IDTFTOH ) THEN
+         !ELSE IF ( N == IDTFTOH ) THEN
 
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-       !  CALL COMPUTE_L2G( 6.0e-6_fp, -3.72e+3_fp, TK, 
-     !&         CLDLIQ(I,J,L), L2G )
+         !  CALL COMPUTE_L2G( 6.0e-6_fp, -3.72e+3_fp, TK, 
+         !&         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
-      !   C_TOT = 1e+0_fp + L2G
-       !  F_L   = L2G / C_TOT
+         !   C_TOT = 1e+0_fp + L2G
+         !  F_L   = L2G / C_TOT
 
          ! Compute the rate constant K.
-        ! IF ( TK >= 268e+0_fp ) THEN
-        !    K = K_RAIN * F_L
-        ! ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
-        !    K = K_RAIN * (0.e+0_fp * F_L)
-        ! ELSE
-        !    K = 0e+0_fp   
-        ! ENDIF
+         ! IF ( TK >= 268e+0_fp ) THEN
+         !    K = K_RAIN * F_L
+         ! ELSE IF ( TK > 248e+0_fp  .and. TK < 268e+0_fp ) THEN
+         !    K = K_RAIN * (0.e+0_fp * F_L)
+         ! ELSE
+         !    K = 0e+0_fp   
+         ! ENDIF
   
          ! Compute RAINFRAC, the fraction of rained-out HBr
          ! (Eq. 10, Jacob et al, 2000)
@@ -4990,15 +4990,15 @@
          CALL WASHFRAC_LIQ_GAS( 9.0e-5_fp, -3.72e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
-     ! ELSE IF ( N == IDTFTOH ) THEN
-     !    KIN      = .FALSE.
-     !    CALL WASHFRAC_LIQ_GAS( 6.0e-6_fp, -3.72e+3_fp,PP, DT,  F,
-     !&                          DZ,     TK,    WASHFRAC, KIN  )
+      ! ELSE IF ( N == IDTFTOH ) THEN
+      !    KIN      = .FALSE.
+      !    CALL WASHFRAC_LIQ_GAS( 6.0e-6_fp, -3.72e+3_fp,PP, DT,  F,
+      !&                          DZ,     TK,    WASHFRAC, KIN  )
 
-     ! ELSE IF ( N == IDTFTI ) THEN
-     !    KIN      = .FALSE.
-     !    CALL WASHFRAC_LIQ_GAS( 4.0e-9_fp, -3.72e+3_fp,PP, DT,  F,
-     !&                          DZ,     TK,    WASHFRAC, KIN  )
+      ! ELSE IF ( N == IDTFTI ) THEN
+      !    KIN      = .FALSE.
+      !    CALL WASHFRAC_LIQ_GAS( 4.0e-9_fp, -3.72e+3_fp,PP, DT,  F,
+      !&                          DZ,     TK,    WASHFRAC, KIN  )
 
       !------------------------------
       ! SO2 (aerosol treatment)
