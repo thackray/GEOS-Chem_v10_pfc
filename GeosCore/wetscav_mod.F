@@ -4991,16 +4991,16 @@
          CALL WASHFRAC_LIQ_GAS( 9.0e-5_fp, -3.72e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
-      ! ELSE IF ( N == IDTFTOH ) THEN
-      !    KIN      = .FALSE.
-      !    CALL WASHFRAC_LIQ_GAS( 6.0e-6_fp, -3.72e+3_fp,PP, DT,  F,
-      !&                          DZ,     TK,    WASHFRAC, KIN  )
-
-      ! ELSE IF ( N == IDTFTI ) THEN
-      !    KIN      = .FALSE.
-      !    CALL WASHFRAC_LIQ_GAS( 4.0e-9_fp, -3.72e+3_fp,PP, DT,  F,
-      !&                          DZ,     TK,    WASHFRAC, KIN  )
-
+      ELSE IF ( N == IDTFTOH ) THEN
+         !    KIN      = .FALSE.
+         !    CALL WASHFRAC_LIQ_GAS( 6.0e-6_fp, -3.72e+3_fp,PP, DT,  F,
+         !&                          DZ,     TK,    WASHFRAC, KIN  )
+         WASHFRAC = 0.0
+      ELSE IF ( N == IDTFTI ) THEN
+         !    KIN      = .FALSE.
+         !    CALL WASHFRAC_LIQ_GAS( 4.0e-9_fp, -3.72e+3_fp,PP, DT,  F,
+         !&                          DZ,     TK,    WASHFRAC, KIN  )
+         WASHFRAC = 0.0
       !------------------------------
       ! SO2 (aerosol treatment)
       !------------------------------
