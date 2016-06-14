@@ -166,7 +166,8 @@
       INTEGER            :: IDTFTAL2, IDTFPAN2, IDTFT1OH, IDTFT1OOH
       INTEGER            :: IDTPFAL, IDTPFALHY, IDTFPAN1, IDTPFOH
       INTEGER            :: IDTPFOA, IDTPFNA, IDTSCPFCA, IDTFTCA
-      INTEGER            :: IDTFTOH, IDTFTI
+      INTEGER            :: IDTFTOH, IDTFTI, IDTPF7OH, IDTPF6OH
+      INTEGER            :: IDTPFHpA, IDTPFHxA
 
       ! For tagged Ox simulation
       INTEGER            :: IDTO3Strt
@@ -698,6 +699,18 @@
             
             CASE ( 'FTOH' )
                IDTFTOH= N
+
+            CASE ( 'PF7OH' )
+               IDTPF7OH= N
+
+            CASE ( 'PF6OH' )
+               IDTPF6OH= N
+
+            CASE ( 'PFHpA' )
+               IDPFHpA= N
+
+            CASE ( 'PFHxA' )
+               IDTPFHxA= N
 
             !--------------------------------
             ! Sulfur & nitrate aerosols
