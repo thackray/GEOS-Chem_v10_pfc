@@ -3738,7 +3738,7 @@
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-         CALL COMPUTE_L2G( 2.0e+2_fp, -2.5e+3_fp, TK, 
+         CALL COMPUTE_L2G( 4.0e+1_fp, -2.5e+3_fp, TK, 
      &         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
@@ -3788,7 +3788,7 @@
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-         CALL COMPUTE_L2G( 2.0e+2_fp, -2.5e+3_fp, TK, 
+         CALL COMPUTE_L2G( 1.0e+3_fp, -2.5e+3_fp, TK, 
      &         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
@@ -3938,7 +3938,7 @@
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-         CALL COMPUTE_L2G( 5.0e+3_fp, -2.5e+3_fp, TK, 
+         CALL COMPUTE_L2G( 1.7e+5_fp, -2.5e+3_fp, TK, 
      &         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
@@ -3988,7 +3988,7 @@
          ! 1. H0 and the heat of solution are taken from Dean [1992].
          ! 2. Dissociation constant for hydrolysis is small (4e-9) and taken
          !    from Beckwith et al. [1996]
-         CALL COMPUTE_L2G( 5.0e+3_fp, -2.5e+3_fp, TK, 
+         CALL COMPUTE_L2G( 3.0e+4_fp, -2.5e+3_fp, TK, 
      &         CLDLIQ(I,J,L), L2G )
 
          ! Fraction of HBr in liquid phase
@@ -5058,7 +5058,7 @@
 
       ELSE IF ( N == IDTPFOH ) THEN
          KIN      = .FALSE.
-         CALL WASHFRAC_LIQ_GAS( 2.0e+2_fp, -2.5e+3_fp,PP, DT,  F,
+         CALL WASHFRAC_LIQ_GAS( 4.0e+1_fp, -2.5e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
       ELSE IF ( N == IDTPF7OH ) THEN
@@ -5068,7 +5068,7 @@
 
       ELSE IF ( N == IDTPF6OH ) THEN
          KIN      = .FALSE.
-         CALL WASHFRAC_LIQ_GAS( 2.0e+2_fp, -2.5e+3_fp,PP, DT,  F,
+         CALL WASHFRAC_LIQ_GAS( 1.0e+3_fp, -2.5e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
       ELSE IF ( N == IDTFPAN2 .or. N == IDTFPAN1 ) THEN
@@ -5093,7 +5093,7 @@
 
       ELSE IF (  N == IDTSCPFCA ) THEN
          KIN      = .FALSE.
-         CALL WASHFRAC_LIQ_GAS( 5.0e+3_fp, -2.5e+3_fp,PP, DT,  F,
+         CALL WASHFRAC_LIQ_GAS( 1.7e+5_fp, -2.5e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
       ELSE IF (  N == IDTPFHpA ) THEN
@@ -5103,7 +5103,7 @@
 
       ELSE IF (  N == IDTPFHxA ) THEN
          KIN      = .FALSE.
-         CALL WASHFRAC_LIQ_GAS( 5.0e+3_fp, -2.5e+3_fp,PP, DT,  F,
+         CALL WASHFRAC_LIQ_GAS( 3.0e+4_fp, -2.5e+3_fp,PP, DT,  F,
      &                          DZ,     TK,    WASHFRAC, KIN  )
 
       ELSE IF ( N == IDTFT1OOH ) THEN
