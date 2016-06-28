@@ -745,6 +745,8 @@ CONTAINS
 
        ! Get the current container or original ID
        ! Check if current field is the wanted one
+       !thackray
+       !WRITE(*,*) TRIM(TmpLct%Dct%cName)
        IF ( TRIM(TmpLct%Dct%cName) == TRIM(NME) ) THEN
           IF ( PRESENT(Lct) ) Lct => TmpLct 
           FOUND = .TRUE.

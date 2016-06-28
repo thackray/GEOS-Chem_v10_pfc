@@ -706,10 +706,10 @@
             CASE ( 'PF6OH' )
                IDTPF6OH= N
 
-            CASE ( 'PFHpA' )
+            CASE ( 'PFHPA' )
                IDTPFHpA= N
 
-            CASE ( 'PFHxA' )
+            CASE ( 'PFHXA' )
                IDTPFHxA= N
 
             !--------------------------------

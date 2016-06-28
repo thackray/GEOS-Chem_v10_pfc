@@ -9137,7 +9137,7 @@
                                                      ! IEPOX, PMNN
 
          NMAX = NMAX + 4                             ! HBr, HOBr, Br2, BrNO3
-         NMAX = NMAX + 15                            ! PFCs
+         NMAX = NMAX + 18                            ! PFCs
          IF ( LSULF )    NMAX = NMAX + 8             ! SO2,   SO4,    MSA,
                                                      ! NH3,   NH4,    NIT
          IF ( LDUST  )   NMAX = NMAX + NDSTBIN       ! plus # of dust bins

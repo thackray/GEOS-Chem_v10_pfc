@@ -59,7 +59,7 @@ MODULE HCOX_PFCA_Mod
 ! !MODULE VARIABLES:
 !
   ! Fields required by module
-  INTEGER                       :: ExtNr     = -1   ! HEMCO Extension number
+  INTEGER                       :: ExtNr     = 115   ! HEMCO Extension number
   INTEGER                       :: IDTFTI = 80      ! Index # for FTI tracer
   INTEGER                       :: IDTFTOH   = 79   ! Index # for FTOH tracer
 
